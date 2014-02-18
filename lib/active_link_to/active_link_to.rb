@@ -44,7 +44,10 @@ module ActiveLinkTo
       link_to(name, url, link_options)
     end
 
-    wrap_tag ? content_tag(wrap_tag, link, :class => (css_class if css_class.present?)) : link
+    content = content_tag(:span, nil, class: 'glow')
+    content << link
+
+    wrap_tag ? content_tag(wrap_tag, content, :class => (css_class if css_class.present?)) : link
   end
 
   # Returns css class name. Takes the link's URL and its params
